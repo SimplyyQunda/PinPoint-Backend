@@ -51,3 +51,16 @@ token authentication!**
   `GET /categories`
 
 5. Add a Channel
+
+  `POST /categories`
+  
+  **Params**:
+  
+  * `category_id`: Integer (required)
+  * `url`: String
+  * `title`: String (required)
+  * `description`: String
+  * `google_id`: String (required)
+  * `subscriber_count`: Integer
+  * `comment_count`: Integer
+  * `video_count`: Integer
