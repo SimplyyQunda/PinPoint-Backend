@@ -12,6 +12,14 @@ class User extends Lucid {
     return this.hasMany('App/Model/Token')
   }
 
+  subscriptions () {
+    return this.hasMany('App/Model/UserCategory')
+  }
+
+  categories () {
+    return this.belongsToMany('App/Model/Category', 'user_categories')
+  }
+
 }
 
 module.exports = User

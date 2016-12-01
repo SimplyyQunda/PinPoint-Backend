@@ -21,6 +21,19 @@ class CategoryController {
     }
   }
 
+  * category (request, response) {
+    let user = request.authUser
+    let id = request.param('id')
+    let category = yield Category.find(id)
+
+    if (category) {
+      let newSub = yield user.subscriptions.create({ category_id: category.id })
+      response.status(201).json(newSub)
+    } else {
+      response.status(404).json({ error: "No such category: " + id })
+    }
+  }
+
 }
 
 module.exports = CategoryController

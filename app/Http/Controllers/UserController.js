@@ -32,6 +32,12 @@ class UserController {
 
   }
 
+  * subscriptions (request, response) {
+    let user = request.authUser
+    let cats = yield user.categories()
+    response.status(200).json(cats)
+  }
+
 }
 
 module.exports = UserController

@@ -9,6 +9,10 @@ class Category extends Lucid {
     return this.hasMany(Channel)
   }
 
+  subscribers () {
+    return this.belongsToMany('App/Model/User', 'user_categories')
+  }
+
 }
 
 module.exports = Category

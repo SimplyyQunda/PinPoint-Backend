@@ -38,7 +38,7 @@ token authentication!**
   * `username`: String
   * `password`: String 
 
-3. Create a Category (Must be an admin) *
+3. Create a Category * (must be an admin)
 
   `POST /categories`
   
@@ -50,7 +50,7 @@ token authentication!**
 
   `GET /categories`
 
-5. Add a Channel
+5. Add a Channel *
 
   `POST /categories`
   
@@ -64,3 +64,11 @@ token authentication!**
   * `subscriber_count`: Integer
   * `comment_count`: Integer
   * `video_count`: Integer
+
+6. Subscribe to a Category *
+
+  `POST /categories/:id/subscribe`
+
+7. Get Categories a User Subscribes To *
+
+  `GET /subscriptions`
