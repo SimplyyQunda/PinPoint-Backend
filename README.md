@@ -21,13 +21,13 @@ Failure to provide a token will result in a 401 error.
 
   **Params**:
 
-  `email`: An email address, must be unique.
-  `username`: A username, must be unique.
-  `password`: A password.
+  * `email`: An email address, must be unique.
+  * `username`: A username, must be unique.
+  * `password`: A password.
 
 2. `POST /login`
 
   **Params**:
 
-  `username`: String
-  `password`: String 
+  * `username`: String
+  * `password`: String 
