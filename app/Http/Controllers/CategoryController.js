@@ -13,7 +13,7 @@ class CategoryController {
     let user = request.authUser
 
     if (user.admin) {
-      let data = response.only('title')
+      let data = request.only('title')
       let newCat = yield Category.create(data)
       response.status(201).json(newCat)
     } else {
