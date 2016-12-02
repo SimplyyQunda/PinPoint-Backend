@@ -22,7 +22,7 @@ Route.on('/').render('welcome')
 Route.post('/signup', 'UserController.register')
 Route.post('/login', 'UserController.login')
 
-Route.get('/categories', 'CategoryControler.index')
+Route.get('/categories', 'CategoryController.index')
 Route.post('/categories', 'CategoryController.create').middleware('auth')
 Route.post('/categories/:id/subscribe', 'CategoryController.subscribe').middleware('auth')
 Route.post('/channels', 'ChannelController.create')
