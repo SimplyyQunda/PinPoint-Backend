@@ -9,6 +9,12 @@ class CategoryController {
     response.status(200).json(cats)
   }
 
+  * show (request, response) {
+    let catId = request.param('id')
+    let cat = yield Category.with('channels').find(catId)
+    response.status(200).json(cat)
+  }
+
   * create (request, response) {
     let user = request.authUser
 

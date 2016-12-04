@@ -72,3 +72,7 @@ token authentication!**
 7. Get Categories a User Subscribes To *
 
   `GET /subscriptions`
+
+8. Get a Category and its Channels
+
+  `GET /category/:id`
