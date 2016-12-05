@@ -11,7 +11,9 @@ class CategoryController {
 
   * show (request, response) {
     let catId = request.param('id')
-    let cat = yield Category.with('channels').find(catId)
+    let cat = yield Category.find(catId)
+    yield cat.related('channels').load()
+
     response.status(200).json(cat)
   }
 
