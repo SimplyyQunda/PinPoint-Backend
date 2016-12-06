@@ -1,6 +1,7 @@
 'use strict'
 
 const Category = use('App/Model/Category')
+const UserCategory = use('App/Model/UserCategory')
 
 class CategoryController {
 
@@ -35,7 +36,8 @@ class CategoryController {
     let category = yield Category.find(id)
 
     if (category) {
-      let newSub = yield user.subscriptions.create({ category_id: category.id })
+      let data = { category_id: id, user_id: user.id }
+      let newSub = yield UserCategory.create(data)
       response.status(201).json(newSub)
     } else {
       response.status(404).json({ error: "No such category: " + id })
