@@ -14,4 +14,4 @@ class UserCategory extends Lucid {
 
 }
 
-module.exports = UserSubscription
+module.exports = UserCategory
