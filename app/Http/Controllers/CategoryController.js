@@ -29,7 +29,7 @@ class CategoryController {
     }
   }
 
-  * category (request, response) {
+  * subscribe (request, response) {
     let user = request.authUser
     let id = request.param('id')
     let category = yield Category.find(id)
