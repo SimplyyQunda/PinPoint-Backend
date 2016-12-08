@@ -29,3 +29,8 @@ Route.post('/categories/:id/subscribe', 'CategoryController.subscribe').middlewa
 Route.post('/channels', 'ChannelController.create')
 
 Route.get('/subscriptions', 'UserController.subscriptions').middleware('auth')
+
+
+Route.get('/channels/:id', 'ChannelController.show')
+Route.post('/channels/:id/comments', 'CommentController.create').middleware('auth')
+Route.delete('/channels/:id/comments/:comment_id', 'CommentController.delete').middleware('auth')

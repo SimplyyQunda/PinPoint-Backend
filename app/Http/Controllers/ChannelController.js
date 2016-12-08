@@ -18,6 +18,10 @@ class ChannelController {
 
   }
 
+  * show (request, response) {
+    
+  }
+
 }
 
 module.exports = ChannelController
