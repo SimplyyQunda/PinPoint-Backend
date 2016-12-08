@@ -76,3 +76,19 @@ token authentication!**
 8. Get a Category and its Channels
 
   `GET /category/:id`
+
+9. Get a Channel and its Comments
+
+  `GET /channels/:id`
+  
+10. Comment on a Channel
+
+  `POST /channels/:id/comments`
+  
+  **Params**:
+  
+  * `text`: String
+
+11. Delete a Comment
+
+  `DELETE /channels/:id/comments/:comment_id`
