@@ -12,7 +12,7 @@ class CategoryController {
 
   * show (request, response) {
     let catId = request.param('id')
-    let cat = yield Category.find(catId)
+    let cat = yield Category.findOrFail(catId)
     yield cat.related('channels').load()
 
     response.status(200).json(cat)
@@ -33,15 +33,11 @@ class CategoryController {
   * subscribe (request, response) {
     let user = request.authUser
     let id = request.param('id')
-    let category = yield Category.find(id)
+    let category = yield Category.findOrFail(id)
 
-    if (category) {
-      let data = { category_id: id, user_id: user.id }
-      let newSub = yield UserCategory.create(data)
-      response.status(201).json(newSub)
-    } else {
-      response.status(404).json({ error: "No such category: " + id })
-    }
+    let data = { category_id: id, user_id: user.id }
+    let newSub = yield UserCategory.create(data)
+    response.status(201).json(newSub)
   }
 
 }

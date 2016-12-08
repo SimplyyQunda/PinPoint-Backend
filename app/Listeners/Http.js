@@ -12,22 +12,13 @@ const Http = exports = module.exports = {}
  * @param  {Object} response
  */
 Http.handleError = function * (error, request, response) {
-  /**
-   * DEVELOPMENT REPORTER
-   */
-  if (Env.get('NODE_ENV') === 'development') {
-    const ouch = new Ouch().pushHandler(
-      new Ouch.handlers.PrettyPageHandler('blue', null, 'sublime')
-    )
-    ouch.handleException(error, request.request, response.response, (output) => {
-      console.error(error.stack)
-    })
+
+  if (error.name === 'ModelNotFoundException') {
+    let id = request.param('id')
+    response.status(404).json({ error: `No record with matching ID in database: ${id}` })
     return
   }
 
-  /**
-   * PRODUCTION REPORTER
-   */
   const status = error.status || 500
   console.error(error.stack)
   yield response.status(status).sendView('errors/index', {error})

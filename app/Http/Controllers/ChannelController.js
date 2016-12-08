@@ -19,7 +19,11 @@ class ChannelController {
   }
 
   * show (request, response) {
-    
+    let chanId = request.param('id')
+    let channel = yield Channel.findOrFail(chanId)
+    yield channel.related('comments').load()
+
+    response.status(200).json(channel)
   }
 
 }
