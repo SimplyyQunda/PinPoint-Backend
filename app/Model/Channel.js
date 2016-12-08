@@ -9,6 +9,10 @@ class Channel extends Lucid {
     return this.belongsTo(Category)
   }
 
+  comments () {
+    return this.hasMany('App/Model/Comment')
+  }
+
 }
 
 module.exports = Channel
