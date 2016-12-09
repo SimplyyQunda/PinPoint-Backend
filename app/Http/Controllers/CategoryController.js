@@ -18,7 +18,7 @@ class CategoryController {
     // let cat = yield Category.findOrFail(catId)
     // yield cat.related('channels').load()
 
-    response.status(200).json(cat)
+    response.status(200).json(cat[0])
   }
 
   * update (request, response) {
