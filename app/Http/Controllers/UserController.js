@@ -2,6 +2,7 @@
 
 const Hash = use('Hash')
 const User = use('App/Model/User')
+const Channel = use('App/Model/Channel')
 
 class UserController {
 
@@ -36,9 +37,10 @@ class UserController {
     let user = request.authUser
     // let cats = yield user.categories().query().with('channels').fetch()
     // let cats = yield user.query().with('categories.channels').fetch()
-    let cats = yield User.query().with('categories.channels')
-         .where('id', request.authUser.id).fetch()
-    response.status(200).json(cats[0])
+    let cats = yield user.categories().pluck('id')
+    let channels = yield Channel.query()
+          .whereIn('id', cats).fetch()
+    response.status(200).json(channels)
   }
 
 }
