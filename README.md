@@ -73,15 +73,24 @@ token authentication!**
 
   `GET /subscriptions`
 
-8. Get a Category and its Channels
+8. Update a Category * (Must be an Admin)
+
+  `PUT /category/:id`
+  
+  **Params**:
+  
+  * `title`: String
+  * `background_url`: String
+
+9. Get a Category and its Channels
 
   `GET /category/:id`
 
-9. Get a Channel and its Comments
+10. Get a Channel and its Comments
 
   `GET /channels/:id`
   
-10. Comment on a Channel
+11. Comment on a Channel
 
   `POST /channels/:id/comments`
   
@@ -89,6 +98,6 @@ token authentication!**
   
   * `text`: String
 
-11. Delete a Comment
+12. Delete a Comment
 
   `DELETE /channels/:id/comments/:comment_id`

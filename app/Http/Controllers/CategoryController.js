@@ -18,6 +18,22 @@ class CategoryController {
     response.status(200).json(cat)
   }
 
+  * update (request, response) {
+    let user = request.authUser
+    let catId = request.param('id')
+    let category = yield Category.findOrFail(catId)
+
+    if (user.admin) {
+      let data = request.only('title', 'background_url')
+      category.fill(data)
+      yield category.save()
+
+      response.status(202).json(category)
+    } else {
+      response.status(403).json({ error: "Only admins may edit categories." })
+    }
+  }
+
   * create (request, response) {
     let user = request.authUser
 

@@ -25,6 +25,7 @@ Route.post('/login', 'UserController.login')
 Route.get('/categories', 'CategoryController.index')
 Route.post('/categories', 'CategoryController.create').middleware('auth')
 Route.get('/categories/:id', 'CategoryController.show')
+Route.put('/categories/:id', 'CategoryController.update').middleware('auth')
 Route.post('/categories/:id/subscribe', 'CategoryController.subscribe').middleware('auth')
 Route.post('/channels', 'ChannelController.create')
 
