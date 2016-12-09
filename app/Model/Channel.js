@@ -13,6 +13,10 @@ class Channel extends Lucid {
     return this.hasMany('App/Model/Comment')
   }
 
+  votes () {
+    return this.hasMany('App/Model/ChannelVote')
+  }
+
 }
 
 module.exports = Channel
