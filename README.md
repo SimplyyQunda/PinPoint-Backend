@@ -90,7 +90,7 @@ token authentication!**
 
   `GET /channels/:id`
   
-11. Comment on a Channel
+11. Comment on a Channel *
 
   `POST /channels/:id/comments`
   
@@ -98,6 +98,14 @@ token authentication!**
   
   * `text`: String
 
-12. Delete a Comment
+12. Delete a Comment *
 
   `DELETE /channels/:id/comments/:comment_id`
+
+13. Vote on a channel *
+
+  `PUT /channels/:id/vote`
+  
+  **Params**:
+  
+  * `score`: Integer either (-1 or 1)
