@@ -13,7 +13,7 @@ class CategoryController {
   * show (request, response) {
     let catId = request.param('id')
     let cat = yield Category.query()
-      .with('channels').findBy('id', catId)
+      .with('channels').where('id', catId)
       .fetch()
     // let cat = yield Category.findOrFail(catId)
     // yield cat.related('channels').load()
