@@ -6,7 +6,7 @@ const UserCategory = use('App/Model/UserCategory')
 class CategoryController {
 
   * index (request, response) {
-    let cats = yield Category.all().order('title')
+    let cats = yield Category.query().orderBy('title').fetch()
     response.status(200).json(cats)
   }
 
