@@ -13,8 +13,7 @@ class CategoryController {
   * show (request, response) {
     let catId = request.param('id')
     let cat = yield Category.query()
-      .with('channels').where('id', catId)
-      .orderBy('channels.score', 'desc').fetch()
+      .with('channels').where('id', catId).fetch()
     let category = cat.value()[0]
 
     response.status(200).json(cat)
