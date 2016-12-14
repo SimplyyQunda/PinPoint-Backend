@@ -35,9 +35,11 @@ class UserController {
 
   * subscriptions (request, response) {
     let user = request.authUser
+    console.log(user.username, user.id)
     // let cats = yield user.categories().query().with('channels').fetch()
     // let cats = yield user.query().with('categories.channels').fetch()
     let cats = yield user.categories().pluck('id')
+    console.log(cats)
     let channels = yield Channel.query()
           .whereIn('category_id', cats).fetch()
     response.status(200).json(channels)
