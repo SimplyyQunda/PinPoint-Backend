@@ -3,7 +3,7 @@
 const Hash = use('Hash')
 const User = use('App/Model/User')
 const Channel = use('App/Model/Channel')
-const UserCategory = use('App/Model/Category')
+const Database = use('Database')
 
 class UserController {
 
@@ -39,10 +39,10 @@ class UserController {
     console.log(user.username, user.id)
     // let cats = yield user.categories().query().with('channels').fetch()
     // let cats = yield user.query().with('categories.channels').fetch()
-    let cats = yield user.categories().map((x) => x.id)
-    console.log(cats)
-    let channels = yield Channel.query()
-          .whereIn('category_id', cats).fetch()
+    let channels = yield Database.table('user_categories')
+          .where('user_id', user.id)
+          .innerJoin('categories', 'categories.id', 'user_categories.category_id')
+          .innerJoin('channels', 'channels.category_id', 'categories.id')
     response.status(200).json(channels)
   }
 
