@@ -53,7 +53,7 @@ class CategoryController {
     let category = yield Category.findOrFail(id)
 
     let data = { category_id: id, user_id: user.id }
-    let newSub = yield UserCategory.create(data)
+    let newSub = yield UserCategory.findOrCreate(data, data)
     response.status(201).json(newSub)
   }
 
