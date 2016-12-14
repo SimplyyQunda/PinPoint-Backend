@@ -17,7 +17,7 @@ class User extends Lucid {
   }
 
   categories () {
-    return this.belongsToMany('App/Model/Category', 'user_categories')
+    return this.belongsToMany('App/Model/Category', 'user_categories', 'user_id', 'category_id')
   }
 
 }
