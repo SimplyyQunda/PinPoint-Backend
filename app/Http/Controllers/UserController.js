@@ -41,7 +41,7 @@ class UserController {
     // let cats = yield user.query().with('categories.channels').fetch()
     let cats = yield UserCategory.query()
           .where('user_id', user.id).fetch()
-    console.log(cats)
+          .value().map(x => x.category_id)
     let channels = yield Channel.query()
           .whereIn('category_id', cats).fetch()
     response.status(200).json(channels)
