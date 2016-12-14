@@ -14,10 +14,8 @@ class CategoryController {
     let catId = request.param('id')
     let cat = yield Category.query()
       .with('channels').where('id', catId)
-      .fetch()
+      .orderBy('channels.score', 'desc').fetch()
     let category = cat.value()[0]
-    // let cat = yield Category.findOrFail(catId)
-    // yield cat.related('channels').load()
 
     response.status(200).json(cat)
   }
