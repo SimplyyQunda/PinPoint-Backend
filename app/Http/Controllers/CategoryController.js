@@ -1,6 +1,7 @@
 'use strict'
 
 const Category = use('App/Model/Category')
+const Channel = use('App/Model/Channel')
 const UserCategory = use('App/Model/UserCategory')
 
 class CategoryController {
@@ -12,11 +13,13 @@ class CategoryController {
 
   * show (request, response) {
     let catId = request.param('id')
-    let cat = yield Category.query()
-      .with('channels').where('id', catId).fetch()
-    let category = cat.value()[0]
+    let category = yield Category.find(catId)
+    let channels = yield Channel.query()
+          .where('category_id', catId)
+          .orderBy('score', 'desc').fetch()
+    category.channels = channels
 
-    response.status(200).json(cat)
+    response.status(200).json(category)
   }
 
   * update (request, response) {
