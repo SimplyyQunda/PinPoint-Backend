@@ -17,9 +17,8 @@ class CategoryController {
     let channels = yield Channel.query()
           .where('category_id', catId)
           .orderBy('score', 'desc').fetch()
-    category.channels = channels
 
-    response.status(200).json(category)
+    response.status(200).json({ category: category, channels: channels })
   }
 
   * update (request, response) {
